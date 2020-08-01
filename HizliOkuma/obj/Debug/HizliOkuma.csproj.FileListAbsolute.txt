@@ -1,0 +1,11 @@
+D:\Briefcase\Git Repositories\HizliOkuma\HizliOkuma\bin\Debug\HizliOkuma.exe.config
+D:\Briefcase\Git Repositories\HizliOkuma\HizliOkuma\bin\Debug\HizliOkuma.exe
+D:\Briefcase\Git Repositories\HizliOkuma\HizliOkuma\bin\Debug\HizliOkuma.pdb
+D:\Briefcase\Git Repositories\HizliOkuma\HizliOkuma\obj\Debug\HizliOkuma.csprojAssemblyReference.cache
+D:\Briefcase\Git Repositories\HizliOkuma\HizliOkuma\obj\Debug\HizliOkuma.Properties.Resources.resources
+D:\Briefcase\Git Repositories\HizliOkuma\HizliOkuma\obj\Debug\HizliOkuma.csproj.GenerateResource.cache
+D:\Briefcase\Git Repositories\HizliOkuma\HizliOkuma\obj\Debug\HizliOkuma.csproj.CoreCompileInputs.cache
+D:\Briefcase\Git Repositories\HizliOkuma\HizliOkuma\obj\Debug\HizliOkuma.exe
+D:\Briefcase\Git Repositories\HizliOkuma\HizliOkuma\obj\Debug\HizliOkuma.pdb
+D:\Briefcase\Git Repositories\HizliOkuma\HizliOkuma\obj\Debug\HizliOkuma.Form1.resources
+D:\Briefcase\Git Repositories\HizliOkuma\HizliOkuma\obj\Debug\HizliOkuma.ObjectMoveForm.resources
