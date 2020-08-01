@@ -13,6 +13,7 @@ namespace HizliOkuma
     public partial class ObjectMoveForm : Form
     {
         int width, height, surecik;
+        bool first, second;
         public ObjectMoveForm()
         {
             InitializeComponent();
@@ -25,7 +26,9 @@ namespace HizliOkuma
             TimerDebug.Text = surecik.ToString();
             timer1 = new System.Windows.Forms.Timer();
             timer1.Tick += new EventHandler(timer1_Tick);
-            timer1.Interval = 100;
+            timer1.Interval = 500;
+            first = true;
+            second = false;
         }
 
         private void ObjectMoveForm_Resize(object sender, EventArgs e)
@@ -43,24 +46,68 @@ namespace HizliOkuma
                 timer1.Enabled = true;
             }
         }
+
+        // Resimdeki Topun Sağa Gidiş Fonksiyonu
+        void SagaGidis()
+        {
+            if (TenisTopu.Location.Y + TenisTopu.Height >= panel1.Height)
+            {
+                Point yNoktasi = new Point();
+                if (TenisTopu.Location.X + TenisTopu.Width * 2 >= panel1.Width)
+                {
+                    first = false;
+                    second = true;
+                    SolaGidis();
+                }
+                else
+                {
+                    yNoktasi = new Point(TenisTopu.Location.X + TenisTopu.Width * 2, 0);
+                    TenisTopu.Location = yNoktasi;
+                }
+            }
+            else
+            {
+                Point yNoktasi = new Point(TenisTopu.Location.X, panel1.Height - (TenisTopu.Height));
+                TenisTopu.Location = yNoktasi;
+            }
+        }
+
+        // Resimdeki Topun Sola Gidiş Fonksiyonu
+        void SolaGidis()
+        {
+            //System.Windows.Forms.MessageBox.Show("Vololooooooooo");
+            if (TenisTopu.Location.Y + TenisTopu.Height >= panel1.Height)
+            {
+                Point yNoktasi = new Point();
+                if (TenisTopu.Location.X - TenisTopu.Width * 2 <= 0)
+                {
+                    first = true;
+                    second = false;
+                    SagaGidis();
+                }
+                else
+                {
+                    yNoktasi = new Point(TenisTopu.Location.X - TenisTopu.Width * 2, 0);
+                    TenisTopu.Location = yNoktasi;
+                }
+            }
+            else
+            {
+                Point yNoktasi = new Point(TenisTopu.Location.X, panel1.Height - (TenisTopu.Height));
+                TenisTopu.Location = yNoktasi;
+            }
+        }
         // To do
-        // Nesne isimleri değiştirilecek
-        // Resim sağa kayacak ve devam edecek
-        // Sona geldiği zaman Duracak 
         // Her tur sonrasında daha da hızlanacak
         private void timer1_Tick(object sender, EventArgs e)
         {
             surecik++;
             TimerDebug.Text = surecik.ToString();
-            if( TenisTopu.Location.Y + TenisTopu.Height >= panel1.Height)
+            if (first)
+                SagaGidis();
+            else if (second)
             {
-                Point yNoktasi = new Point(TenisTopu.Location.X, 0);
-                TenisTopu.Location = yNoktasi;
-            }
-            else
-            { 
-                Point yNoktasi = new Point(TenisTopu.Location.X, panel1.Height - (TenisTopu.Height));
-                TenisTopu.Location = yNoktasi;
+                SolaGidis();
             }
         }
 
