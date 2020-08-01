@@ -37,12 +37,14 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.TimerDebug = new System.Windows.Forms.Label();
             this.StartButton = new System.Windows.Forms.Button();
+            this.LokasyonDebug = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TenisTopu)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.LokasyonDebug);
             this.panel1.Controls.Add(this.StartButton);
             this.panel1.Controls.Add(this.TimerDebug);
             this.panel1.Controls.Add(this.TenisTopu);
@@ -103,6 +105,15 @@
             this.StartButton.UseVisualStyleBackColor = true;
             this.StartButton.Click += new System.EventHandler(this.button1_Click);
             // 
+            // LokasyonDebug
+            // 
+            this.LokasyonDebug.AutoSize = true;
+            this.LokasyonDebug.Location = new System.Drawing.Point(385, 3);
+            this.LokasyonDebug.Name = "LokasyonDebug";
+            this.LokasyonDebug.Size = new System.Drawing.Size(35, 13);
+            this.LokasyonDebug.TabIndex = 5;
+            this.LokasyonDebug.Text = "label3";
+            // 
             // ObjectMoveForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -132,5 +143,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label TimerDebug;
         private System.Windows.Forms.Button StartButton;
+        private System.Windows.Forms.Label LokasyonDebug;
     }
 }
