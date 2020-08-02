@@ -12,15 +12,13 @@ namespace HizliOkuma
 {
 
     // To DO
-    // Çapraz gitme yapılacak.
-    // Ekrandan çıkma sorunu ve tekleme yeniden düzenlenecek
     // Zaman 90 saniye olacak ve Seviyeye Göre değişecek Hız
     // TimeInterval 300 altına düşmeyecek
     // En sonunda kod düzenlenecek
     public partial class ObjectMoveForm : Form
     {
-        int width, height, surecik;
-        bool first, second, third, fourth;
+        int width, height, surecik, xKatsayi, yKatsayi;
+        bool first, second, third, fourth, fifth, sixth;
         Point TenisTopuReset;
         public ObjectMoveForm()
         {
@@ -35,11 +33,18 @@ namespace HizliOkuma
             TimerDebug.Text = surecik.ToString();
             timer1 = new System.Windows.Forms.Timer();
             timer1.Tick += new EventHandler(timer1_Tick);
-            timer1.Interval = 600;
+            timer1.Interval = 1000;
             first = true;
             second = false;
             third = false;
             fourth = false;
+            fifth = false;
+            sixth = false;
+
+            xKatsayi = panel1.Width / 10;
+            yKatsayi = panel1.Height / 10;
+
+
             TenisTopuReset = TenisTopu.Location;
         }
 
@@ -47,6 +52,8 @@ namespace HizliOkuma
         {
             WidthDebug.Text = "Width = " + this.panel1.Width.ToString();
             HeightDebug.Text = "Height = " + this.panel1.Height.ToString();
+            xKatsayi = panel1.Width / 10;
+            yKatsayi = panel1.Height / 10;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -83,6 +90,19 @@ namespace HizliOkuma
                 TenisTopu.Location = yNoktasi;
             }
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            timer1.Interval += 100;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(timer1.Interval > 100)
+                timer1.Interval -= 100;
+        }
+
+
 
         // Resimdeki Topun Sola Gidiş Fonksiyonu
         void AsagiYukariSolaGidis()
@@ -151,11 +171,55 @@ namespace HizliOkuma
             if(TenisTopu.Location.Y < 0)
             {
                 fourth = false;
-                first = true;
-                timer1.Interval -= 100;
-                TenisTopu.Location = new Point(3, 3);
-                AsagiYukariSagaGidis();
+                fifth = true;
+                yNoktasi = new Point((panel1.Width - TenisTopu.Width) / 2, (panel1.Height - TenisTopu.Height) / 2);
+                TenisTopu.Location = yNoktasi;
+                CaprazSagaGidis();
             }
+        }
+
+        int katsayiArttirici = 1;
+        void CaprazSagaGidis()
+        {
+            if(TenisTopu.Location.X < panel1.Width - TenisTopu.Width && TenisTopu.Location.Y < panel1.Height - TenisTopu.Width)
+            { 
+                int yeniX = TenisTopu.Location.X + (xKatsayi * katsayiArttirici);
+                int yeniY = TenisTopu.Location.Y - (yKatsayi * katsayiArttirici);
+                Point yNoktasi = new Point( yeniX,  yeniY);
+                TenisTopu.Location = yNoktasi;
+                fifth = false;
+                sixth = true;
+            }
+            else
+            {
+                sixth = false;
+                first = true;
+            }
+            katsayiArttirici++;
+        }
+
+        void CaprazSagaGidisAsagi()
+        {
+            if(TenisTopu.Location.Y < panel1.Height - TenisTopu.Width && TenisTopu.Location.Y < panel1.Height - TenisTopu.Width)
+            { 
+                int yeniX = TenisTopu.Location.X - (xKatsayi * katsayiArttirici);
+                int yeniY = TenisTopu.Location.Y + (yKatsayi * katsayiArttirici);
+                Point yNoktasi = new Point(yeniX, yeniY);
+                TenisTopu.Location = yNoktasi;
+                fifth = true;
+                sixth = false;
+            }
+            else
+            {
+                sixth = false;
+                first = true;
+            }
+            katsayiArttirici++;
+        }
+
+        void CaprazSolaGidis()
+        {
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -164,7 +228,12 @@ namespace HizliOkuma
             LokasyonDebug.Text = TenisTopu.Location.X.ToString() + ", " + TenisTopu.Location.Y.ToString();
             TimerDebug.Text = surecik.ToString();
             if (first)
+            {
+                xKatsayi = panel1.Width / 10;
+                yKatsayi = panel1.Height / 10;
+                katsayiArttirici = 1;
                 AsagiYukariSagaGidis();
+            }
             else if (second)
             {
                 AsagiYukariSolaGidis();
@@ -173,9 +242,20 @@ namespace HizliOkuma
             {
                 SagaSolaAsagiGidis();
             }
-            else if(fourth)
+            else if (fourth)
             {
                 SagaSolaYukariGidis();
+            }
+            else if (fifth)
+            {
+                CaprazSagaGidis();
+            }
+            else if (sixth)
+            {
+                CaprazSagaGidisAsagi();
+                //CaprazSagaGidis();
+                //if (timer1.Interval > 100)
+                //    timer1.Interval -= 100;
             }
         }
 
