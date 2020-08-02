@@ -16,6 +16,7 @@ namespace HizliOkuma
     // Ekrandan çıkma sorunu ve tekleme yeniden düzenlenecek
     // Zaman 90 saniye olacak ve Seviyeye Göre değişecek Hız
     // TimeInterval 300 altına düşmeyecek
+    // En sonunda kod düzenlenecek
     public partial class ObjectMoveForm : Form
     {
         int width, height, surecik;
@@ -34,7 +35,7 @@ namespace HizliOkuma
             TimerDebug.Text = surecik.ToString();
             timer1 = new System.Windows.Forms.Timer();
             timer1.Tick += new EventHandler(timer1_Tick);
-            timer1.Interval = 1000;
+            timer1.Interval = 600;
             first = true;
             second = false;
             third = false;
@@ -129,9 +130,11 @@ namespace HizliOkuma
                 third = false;
                 fourth = true;
                 TenisTopu.Location = new Point(3, TenisTopu.Location.Y);
+                SagaSolaYukariGidis();
             }
         }
 
+        // Bu fonksiyon sağa sola yukarı doğru gidişi sağlar.
         void SagaSolaYukariGidis()
         {
             Point yNoktasi;
@@ -150,7 +153,8 @@ namespace HizliOkuma
                 fourth = false;
                 first = true;
                 timer1.Interval -= 100;
-                TenisTopu.Location = new Point(3, TenisTopu.Location.Y - TenisTopu.Height);
+                TenisTopu.Location = new Point(3, 3);
+                AsagiYukariSagaGidis();
             }
         }
 
