@@ -16,7 +16,7 @@ namespace HizliOkuma
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ObjectMoveForm());
+            Application.Run(new Form1());
         }
     }
 }

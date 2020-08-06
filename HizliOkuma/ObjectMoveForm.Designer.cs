@@ -31,60 +31,21 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ObjectMoveForm));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.LokasyonDebug = new System.Windows.Forms.Label();
-            this.StartButton = new System.Windows.Forms.Button();
-            this.TimerDebug = new System.Windows.Forms.Label();
             this.TenisTopu = new System.Windows.Forms.PictureBox();
-            this.WidthDebug = new System.Windows.Forms.Label();
-            this.HeightDebug = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.TopunHizi = new System.Windows.Forms.Timer(this.components);
+            this.CalismaSuresi = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TenisTopu)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.LokasyonDebug);
-            this.panel1.Controls.Add(this.StartButton);
-            this.panel1.Controls.Add(this.TimerDebug);
             this.panel1.Controls.Add(this.TenisTopu);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 450);
             this.panel1.TabIndex = 0;
-            // 
-            // LokasyonDebug
-            // 
-            this.LokasyonDebug.AutoSize = true;
-            this.LokasyonDebug.Location = new System.Drawing.Point(385, 3);
-            this.LokasyonDebug.Name = "LokasyonDebug";
-            this.LokasyonDebug.Size = new System.Drawing.Size(35, 13);
-            this.LokasyonDebug.TabIndex = 5;
-            this.LokasyonDebug.Text = "label3";
-            // 
-            // StartButton
-            // 
-            this.StartButton.Location = new System.Drawing.Point(722, 3);
-            this.StartButton.Name = "StartButton";
-            this.StartButton.Size = new System.Drawing.Size(75, 23);
-            this.StartButton.TabIndex = 4;
-            this.StartButton.Text = "button1";
-            this.StartButton.UseVisualStyleBackColor = true;
-            this.StartButton.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // TimerDebug
-            // 
-            this.TimerDebug.AutoSize = true;
-            this.TimerDebug.Location = new System.Drawing.Point(262, 0);
-            this.TimerDebug.Name = "TimerDebug";
-            this.TimerDebug.Size = new System.Drawing.Size(35, 13);
-            this.TimerDebug.TabIndex = 3;
-            this.TimerDebug.Text = "label3";
             // 
             // TenisTopu
             // 
@@ -96,65 +57,27 @@
             this.TenisTopu.TabIndex = 0;
             this.TenisTopu.TabStop = false;
             // 
-            // WidthDebug
+            // TopunHizi
             // 
-            this.WidthDebug.AutoSize = true;
-            this.WidthDebug.Location = new System.Drawing.Point(9, -1);
-            this.WidthDebug.Name = "WidthDebug";
-            this.WidthDebug.Size = new System.Drawing.Size(35, 13);
-            this.WidthDebug.TabIndex = 1;
-            this.WidthDebug.Text = "label1";
+            this.TopunHizi.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // HeightDebug
+            // CalismaSuresi
             // 
-            this.HeightDebug.AutoSize = true;
-            this.HeightDebug.Location = new System.Drawing.Point(126, -1);
-            this.HeightDebug.Name = "HeightDebug";
-            this.HeightDebug.Size = new System.Drawing.Size(35, 13);
-            this.HeightDebug.TabIndex = 2;
-            this.HeightDebug.Text = "label2";
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(725, 32);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(722, 61);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "button1";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.CalismaSuresi.Tick += new System.EventHandler(this.CalismaSuresi_Tick);
             // 
             // ObjectMoveForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.HeightDebug);
-            this.Controls.Add(this.WidthDebug);
             this.Controls.Add(this.panel1);
             this.Name = "ObjectMoveForm";
             this.Text = "ObjectMoveForm";
             this.Load += new System.EventHandler(this.ObjectMoveForm_Load);
             this.Resize += new System.EventHandler(this.ObjectMoveForm_Resize);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TenisTopu)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -162,13 +85,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox TenisTopu;
-        private System.Windows.Forms.Label WidthDebug;
-        private System.Windows.Forms.Label HeightDebug;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label TimerDebug;
-        private System.Windows.Forms.Button StartButton;
-        private System.Windows.Forms.Label LokasyonDebug;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Timer TopunHizi;
+        private System.Windows.Forms.Timer CalismaSuresi;
     }
 }
