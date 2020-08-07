@@ -12,34 +12,50 @@ namespace HizliOkuma
 {
 
     // To DO
-    // Zaman 90 saniye olacak ve Seviyeye Göre değişecek Hız
-    // TimeInterval 300 altına düşmeyecek
     // En sonunda kod düzenlenecek
+
+    public enum kontrolcu
+    {
+        AsagiYukariSagaGidis,
+        AsagiYukariSolaGidis,
+        SagaSolaAsagiGidis,
+        SagaSolaYukariGidis,
+        CaprazSagaGidis,
+        CaprazSagaGidisAsagi,
+        CaprazSolaGidis,
+        CaprazSolaGidisAsagi
+    }
+
     public partial class ObjectMoveForm : Form
     {
-        int width, height, surecik, xKatsayi, yKatsayi;
-        bool first, second, third, fourth, fifth, sixth;
-        Point TenisTopuReset;
+        int width, height, surecik, xKatsayi, yKatsayi, seviye;
+        Point TenisTopuReset, YeniNokta;
+        kontrolcu hareketKontrol;
         public ObjectMoveForm()
         {
             InitializeComponent();
             width = this.panel1.Width;
             height = this.panel1.Height;
-            StartButton.Text = "Sureci";
             surecik = 0;
-            WidthDebug.Text = "Width = " + width.ToString();
-            HeightDebug.Text = "Height = " + height.ToString();
-            LokasyonDebug.Text = TenisTopu.Location.X.ToString() + ", " + TenisTopu.Location.Y.ToString();
-            TimerDebug.Text = surecik.ToString();
-            timer1 = new System.Windows.Forms.Timer();
-            timer1.Tick += new EventHandler(timer1_Tick);
-            timer1.Interval = 1000;
-            first = true;
-            second = false;
-            third = false;
-            fourth = false;
-            fifth = false;
-            sixth = false;
+
+            // Seviye diğer formdan gelecek
+            seviye = 1;
+            
+            TopunHizi = new System.Windows.Forms.Timer();
+            TopunHizi.Tick += new EventHandler(timer1_Tick);
+            if ( seviye == 1)
+                TopunHizi.Interval = 1000;
+            else
+                TopunHizi.Interval = (1000 / 10) * seviye;
+            TopunHizi.Enabled = true;
+
+            CalismaSuresi = new System.Windows.Forms.Timer();
+            CalismaSuresi.Tick += new EventHandler(CalismaSuresi_Tick);
+            CalismaSuresi.Interval = 1000;
+            CalismaSuresi.Enabled = true;
+            
+
+            hareketKontrol = kontrolcu.AsagiYukariSagaGidis;
 
             xKatsayi = panel1.Width / 10;
             yKatsayi = panel1.Height / 10;
@@ -50,20 +66,8 @@ namespace HizliOkuma
 
         private void ObjectMoveForm_Resize(object sender, EventArgs e)
         {
-            WidthDebug.Text = "Width = " + this.panel1.Width.ToString();
-            HeightDebug.Text = "Height = " + this.panel1.Height.ToString();
             xKatsayi = panel1.Width / 10;
             yKatsayi = panel1.Height / 10;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (timer1.Enabled)
-                timer1.Enabled = false;
-            else
-            {
-                timer1.Enabled = true;
-            }
         }
 
         // Resimdeki Topun Sağa Gidiş Fonksiyonu
@@ -71,84 +75,64 @@ namespace HizliOkuma
         {
             if (TenisTopu.Location.Y + TenisTopu.Height >= panel1.Height)
             {
-                Point yNoktasi = new Point();
                 if (TenisTopu.Location.X + TenisTopu.Width * 2 >= panel1.Width)
                 {
-                    first = false;
-                    second = true;
+                    hareketKontrol = kontrolcu.AsagiYukariSolaGidis;
                     AsagiYukariSolaGidis();
                 }
                 else
                 {
-                    yNoktasi = new Point(TenisTopu.Location.X + TenisTopu.Width * 2, 0);
-                    TenisTopu.Location = yNoktasi;
+                    YeniNokta = new Point(TenisTopu.Location.X + TenisTopu.Width * 2, 0);
+                    TenisTopu.Location = YeniNokta;
                 }
             }
             else
             {
-                Point yNoktasi = new Point(TenisTopu.Location.X, panel1.Height - (TenisTopu.Height));
-                TenisTopu.Location = yNoktasi;
+                YeniNokta = new Point(TenisTopu.Location.X, panel1.Height - (TenisTopu.Height));
+                TenisTopu.Location = YeniNokta;
             }
         }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            timer1.Interval += 100;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if(timer1.Interval > 100)
-                timer1.Interval -= 100;
-        }
-
-
 
         // Resimdeki Topun Sola Gidiş Fonksiyonu
         void AsagiYukariSolaGidis()
         {
-            //System.Windows.Forms.MessageBox.Show("Vololooooooooo");
             if (TenisTopu.Location.Y + TenisTopu.Height >= panel1.Height)
             {
-                Point yNoktasi = new Point();
                 if (TenisTopu.Location.X - TenisTopu.Width * 2 <= 0)
                 {
-                    third = true;
-                    second = false;
+                    hareketKontrol = kontrolcu.SagaSolaAsagiGidis;
                     TenisTopu.Location = new Point(TenisTopuReset.X, TenisTopuReset.Y);
                     SagaSolaAsagiGidis();
                 }
                 else
                 {
-                    yNoktasi = new Point(TenisTopu.Location.X - TenisTopu.Width * 2, 0);
-                    TenisTopu.Location = yNoktasi;
+                    YeniNokta = new Point(TenisTopu.Location.X - TenisTopu.Width * 2, 0);
+                    TenisTopu.Location = YeniNokta;
                 }
             }
             else
             {
-                Point yNoktasi = new Point(TenisTopu.Location.X, panel1.Height - (TenisTopu.Height));
-                TenisTopu.Location = yNoktasi;
+                YeniNokta = new Point(TenisTopu.Location.X, panel1.Height - (TenisTopu.Height));
+                TenisTopu.Location = YeniNokta;
             }
         }
 
         // Bu fonksiyon sağa sola aşağı doğru gidişi sağlar.
         void SagaSolaAsagiGidis()
         {
-            Point yNoktasi;
-            if(TenisTopu.Location.Y + TenisTopu.Height *2 <= panel1.Height)
+            if (TenisTopu.Location.Y + TenisTopu.Height * 2 <= panel1.Height)
             {
                 if (TenisTopu.Location.X + TenisTopu.Width * 2 <= panel1.Width)
                 {
-                    yNoktasi = new Point(panel1.Width - TenisTopu.Width, TenisTopu.Location.Y);
-                    TenisTopu.Location = yNoktasi;
+                    YeniNokta = new Point(panel1.Width - TenisTopu.Width, TenisTopu.Location.Y);
+                    TenisTopu.Location = YeniNokta;
                 }
                 else
                     TenisTopu.Location = new Point(3, TenisTopu.Location.Y + TenisTopu.Height);
             }
             else
             {
-                third = false;
-                fourth = true;
+                hareketKontrol = kontrolcu.SagaSolaYukariGidis;
                 TenisTopu.Location = new Point(3, TenisTopu.Location.Y);
                 SagaSolaYukariGidis();
             }
@@ -157,23 +141,21 @@ namespace HizliOkuma
         // Bu fonksiyon sağa sola yukarı doğru gidişi sağlar.
         void SagaSolaYukariGidis()
         {
-            Point yNoktasi;
             if (TenisTopu.Location.X + TenisTopu.Width * 2 <= panel1.Width)
             {
-                yNoktasi = new Point(panel1.Width - TenisTopu.Width, TenisTopu.Location.Y - TenisTopu.Height);
-                TenisTopu.Location = yNoktasi;
+                YeniNokta = new Point(panel1.Width - TenisTopu.Width, TenisTopu.Location.Y - TenisTopu.Height);
+                TenisTopu.Location = YeniNokta;
             }
             else
             {
                 TenisTopu.Location = new Point(3, TenisTopu.Location.Y);
             }
 
-            if(TenisTopu.Location.Y < 0)
+            if (TenisTopu.Location.Y < 0)
             {
-                fourth = false;
-                fifth = true;
-                yNoktasi = new Point((panel1.Width - TenisTopu.Width) / 2, (panel1.Height - TenisTopu.Height) / 2);
-                TenisTopu.Location = yNoktasi;
+                hareketKontrol = kontrolcu.CaprazSagaGidis;
+                YeniNokta = new Point((panel1.Width - TenisTopu.Width) / 2, (panel1.Height - TenisTopu.Height) / 2);
+                TenisTopu.Location = YeniNokta;
                 CaprazSagaGidis();
             }
         }
@@ -181,87 +163,134 @@ namespace HizliOkuma
         int katsayiArttirici = 1;
         void CaprazSagaGidis()
         {
-            if(TenisTopu.Location.X < panel1.Width - TenisTopu.Width && TenisTopu.Location.Y < panel1.Height - TenisTopu.Width)
-            { 
+            if (TenisTopu.Location.X < panel1.Width - TenisTopu.Width && TenisTopu.Location.Y < panel1.Height - TenisTopu.Width)
+            {
                 int yeniX = TenisTopu.Location.X + (xKatsayi * katsayiArttirici);
                 int yeniY = TenisTopu.Location.Y - (yKatsayi * katsayiArttirici);
-                Point yNoktasi = new Point( yeniX,  yeniY);
-                TenisTopu.Location = yNoktasi;
-                fifth = false;
-                sixth = true;
+                YeniNokta = new Point(yeniX, yeniY);
+                TenisTopu.Location = YeniNokta;
+                hareketKontrol = kontrolcu.CaprazSagaGidisAsagi;
             }
             else
             {
-                sixth = false;
-                first = true;
+                hareketKontrol = kontrolcu.CaprazSolaGidis;
+                TenisTopu.Location = new Point((panel1.Width - TenisTopu.Width) / 2, (panel1.Height - TenisTopu.Height) / 2);
             }
             katsayiArttirici++;
         }
 
+        
         void CaprazSagaGidisAsagi()
         {
-            if(TenisTopu.Location.Y < panel1.Height - TenisTopu.Width && TenisTopu.Location.Y < panel1.Height - TenisTopu.Width)
-            { 
+            if (TenisTopu.Location.Y < panel1.Height - TenisTopu.Width && TenisTopu.Location.Y < panel1.Height - TenisTopu.Width)
+            {
                 int yeniX = TenisTopu.Location.X - (xKatsayi * katsayiArttirici);
                 int yeniY = TenisTopu.Location.Y + (yKatsayi * katsayiArttirici);
-                Point yNoktasi = new Point(yeniX, yeniY);
-                TenisTopu.Location = yNoktasi;
-                fifth = true;
-                sixth = false;
+                YeniNokta = new Point(yeniX, yeniY);
+                TenisTopu.Location = YeniNokta;
+                hareketKontrol = kontrolcu.CaprazSagaGidis;
             }
             else
             {
-                sixth = false;
-                first = true;
+                hareketKontrol = kontrolcu.CaprazSolaGidis;
+                TenisTopu.Location = new Point((panel1.Width - TenisTopu.Width) / 2, (panel1.Height - TenisTopu.Height) / 2);
             }
             katsayiArttirici++;
         }
 
+        
+        private void CalismaSuresi_Tick(object sender, EventArgs e)
+        {
+            if (surecik < 90)
+            {
+                surecik++;
+                label1.Text = surecik.ToString();
+            }
+            else
+                this.Close();
+        }
+
+        int katsayiArttirici2 = 1;
         void CaprazSolaGidis()
         {
+            if (TenisTopu.Location.X < panel1.Width - TenisTopu.Width && TenisTopu.Location.Y < panel1.Height - TenisTopu.Width)
+            {
+                int yeniX = TenisTopu.Location.X - (xKatsayi * katsayiArttirici2);
+                int yeniY = TenisTopu.Location.Y - (yKatsayi * katsayiArttirici2);
+                YeniNokta = new Point(yeniX, yeniY);
+                TenisTopu.Location = YeniNokta;
+                hareketKontrol = kontrolcu.CaprazSolaGidisAsagi;
+            }
+            else
+            {
+                hareketKontrol = kontrolcu.AsagiYukariSagaGidis;
+                TenisTopu.Location = new Point(3,3);
+            }
+            katsayiArttirici2++;
+        }
 
+        void CaprazSolaGidisAsagi()
+        {
+            if (TenisTopu.Location.Y < panel1.Height - TenisTopu.Width && TenisTopu.Location.Y < panel1.Height - TenisTopu.Width)
+            {
+                int yeniX = TenisTopu.Location.X + (xKatsayi * katsayiArttirici2);
+                int yeniY = TenisTopu.Location.Y + (yKatsayi * katsayiArttirici2);
+                YeniNokta = new Point(yeniX, yeniY);
+                TenisTopu.Location = YeniNokta;
+                hareketKontrol = kontrolcu.CaprazSolaGidis;
+            }
+            else
+            {
+                hareketKontrol = kontrolcu.AsagiYukariSagaGidis;
+                TenisTopu.Location = new Point(3,3);
+            }
+            katsayiArttirici2++;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            surecik++;
-            LokasyonDebug.Text = TenisTopu.Location.X.ToString() + ", " + TenisTopu.Location.Y.ToString();
-            TimerDebug.Text = surecik.ToString();
-            if (first)
+            if (hareketKontrol == kontrolcu.AsagiYukariSagaGidis)
             {
                 xKatsayi = panel1.Width / 10;
                 yKatsayi = panel1.Height / 10;
                 katsayiArttirici = 1;
+                katsayiArttirici2 = 1;
                 AsagiYukariSagaGidis();
             }
-            else if (second)
+            else if (hareketKontrol == kontrolcu.AsagiYukariSolaGidis)
             {
                 AsagiYukariSolaGidis();
             }
-            else if (third)
+            else if (hareketKontrol == kontrolcu.SagaSolaAsagiGidis)
             {
                 SagaSolaAsagiGidis();
             }
-            else if (fourth)
+            else if (hareketKontrol == kontrolcu.SagaSolaYukariGidis)
             {
                 SagaSolaYukariGidis();
             }
-            else if (fifth)
+            else if (hareketKontrol == kontrolcu.CaprazSagaGidis)
             {
                 CaprazSagaGidis();
             }
-            else if (sixth)
+            else if (hareketKontrol == kontrolcu.CaprazSagaGidisAsagi)
             {
                 CaprazSagaGidisAsagi();
-                //CaprazSagaGidis();
-                //if (timer1.Interval > 100)
-                //    timer1.Interval -= 100;
             }
+            else if (hareketKontrol == kontrolcu.CaprazSolaGidis)
+            {
+                CaprazSolaGidis();
+            }
+            else if (hareketKontrol == kontrolcu.CaprazSolaGidisAsagi)
+            {
+                CaprazSolaGidisAsagi();
+            }
+            System.GC.SuppressFinalize(YeniNokta);
         }
 
         private void ObjectMoveForm_Load(object sender, EventArgs e)
         {
-            
+
         }
     }
 }
