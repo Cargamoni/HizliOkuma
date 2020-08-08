@@ -46,25 +46,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="AnaForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AnaForm.Designer.cs">
+      <DependentUpon>AnaForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ObjectMoveForm.cs">
+    <Compile Include="KayanResimlerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ObjectMoveForm.Designer.cs">
-      <DependentUpon>ObjectMoveForm.cs</DependentUpon>
+    <Compile Include="KayanResimlerForm.Designer.cs">
+      <DependentUpon>KayanResimlerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TenisTopuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TenisTopuForm.Designer.cs">
+      <DependentUpon>TenisTopuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="AnaForm.resx">
+      <DependentUpon>AnaForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ObjectMoveForm.resx">
-      <DependentUpon>ObjectMoveForm.cs</DependentUpon>
+    <EmbeddedResource Include="KayanResimlerForm.resx">
+      <DependentUpon>KayanResimlerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TenisTopuForm.resx">
+      <DependentUpon>TenisTopuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -75,6 +84,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="images\KayanResimler\different_food_objects_icons_vector_535857.zip" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -89,6 +99,78 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\KayanResimler\alligator.jpg" />
+    <Content Include="images\KayanResimler\ant.jpg" />
+    <Content Include="images\KayanResimler\apple pie.jpg" />
+    <Content Include="images\KayanResimler\apple.jpg" />
+    <Content Include="images\KayanResimler\avocado.jpg" />
+    <Content Include="images\KayanResimler\banana.jpg" />
+    <Content Include="images\KayanResimler\bear.jpg" />
+    <Content Include="images\KayanResimler\blueberry.jpg" />
+    <Content Include="images\KayanResimler\boar.jpg" />
+    <Content Include="images\KayanResimler\books.jpg" />
+    <Content Include="images\KayanResimler\camel.jpg" />
+    <Content Include="images\KayanResimler\candy cane.jpg" />
+    <Content Include="images\KayanResimler\cd player.jpg" />
+    <Content Include="images\KayanResimler\chair.jpg" />
+    <Content Include="images\KayanResimler\cherry.jpg" />
+    <Content Include="images\KayanResimler\Christmas cake.jpg" />
+    <Content Include="images\KayanResimler\Christmas tree.jpg" />
+    <Content Include="images\KayanResimler\coffee.jpg" />
+    <Content Include="images\KayanResimler\computer.jpg" />
+    <Content Include="images\KayanResimler\deer.jpg" />
+    <Content Include="images\KayanResimler\desk.jpg" />
+    <Content Include="images\KayanResimler\elephant.jpg" />
+    <Content Include="images\KayanResimler\fish.jpg" />
+    <Content Include="images\KayanResimler\fox.jpg" />
+    <Content Include="images\KayanResimler\giraffe.jpg" />
+    <Content Include="images\KayanResimler\gorilla.jpg" />
+    <Content Include="images\KayanResimler\grapefruit.jpg" />
+    <Content Include="images\KayanResimler\grapes.jpg" />
+    <Content Include="images\KayanResimler\hamburger.jpg" />
+    <Content Include="images\KayanResimler\hippopotamus.jpg" />
+    <Content Include="images\KayanResimler\hotdog.jpg" />
+    <Content Include="images\KayanResimler\ice coffee.jpg" />
+    <Content Include="images\KayanResimler\kangaroo.jpg" />
+    <Content Include="images\KayanResimler\kiwifruit.jpg" />
+    <Content Include="images\KayanResimler\koala.jpg" />
+    <Content Include="images\KayanResimler\lemon.jpg" />
+    <Content Include="images\KayanResimler\lion.jpg" />
+    <Content Include="images\KayanResimler\mango.jpg" />
+    <Content Include="images\KayanResimler\melon.jpg" />
+    <Content Include="images\KayanResimler\monkey.jpg" />
+    <Content Include="images\KayanResimler\nashi pear.jpg" />
+    <Content Include="images\KayanResimler\orange.jpg" />
+    <Content Include="images\KayanResimler\orangutan.jpg" />
+    <Content Include="images\KayanResimler\ostrich.jpg" />
+    <Content Include="images\KayanResimler\panda.jpg" />
+    <Content Include="images\KayanResimler\peach.jpg" />
+    <Content Include="images\KayanResimler\pear.jpg" />
+    <Content Include="images\KayanResimler\penguin.jpg" />
+    <Content Include="images\KayanResimler\pineapple.jpg" />
+    <Content Include="images\KayanResimler\pizza.jpg" />
+    <Content Include="images\KayanResimler\plum.jpg" />
+    <Content Include="images\KayanResimler\polar bear.jpg" />
+    <Content Include="images\KayanResimler\rat.jpg" />
+    <Content Include="images\KayanResimler\rhinocerous.jpg" />
+    <Content Include="images\KayanResimler\sandwich.jpg" />
+    <Content Include="images\KayanResimler\school bag.jpg" />
+    <Content Include="images\KayanResimler\shoes.jpg" />
+    <Content Include="images\KayanResimler\snake.jpg" />
+    <Content Include="images\KayanResimler\soda.jpg" />
+    <Content Include="images\KayanResimler\spaghetti.jpg" />
+    <Content Include="images\KayanResimler\spider.jpg" />
+    <Content Include="images\KayanResimler\steak.jpg" />
+    <Content Include="images\KayanResimler\strawberry.jpg" />
+    <Content Include="images\KayanResimler\tangerine.jpg" />
+    <Content Include="images\KayanResimler\tiger.jpg" />
+    <Content Include="images\KayanResimler\TV.jpg" />
+    <Content Include="images\KayanResimler\wallaby.jpg" />
+    <Content Include="images\KayanResimler\water.jpg" />
+    <Content Include="images\KayanResimler\watermelon.jpg" />
+    <Content Include="images\KayanResimler\wolf.jpg" />
+    <Content Include="images\KayanResimler\worm.jpg" />
+    <Content Include="images\KayanResimler\zebra.jpg" />
     <Content Include="images\tennis.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -13,7 +13,6 @@ namespace HizliOkuma
 
     // To DO
     // En sonunda kod düzenlenecek
-
     public enum kontrolcu
     {
         AsagiYukariSagaGidis,
@@ -26,12 +25,12 @@ namespace HizliOkuma
         CaprazSolaGidisAsagi
     }
 
-    public partial class ObjectMoveForm : Form
+    public partial class TenisTopuForm : Form
     {
         int width, height, surecik, xKatsayi, yKatsayi, seviye;
         Point TenisTopuReset, YeniNokta;
         kontrolcu hareketKontrol;
-        public ObjectMoveForm()
+        public TenisTopuForm()
         {
             InitializeComponent();
             width = this.panel1.Width;
@@ -40,7 +39,7 @@ namespace HizliOkuma
 
             // Seviye diğer formdan gelecek
             seviye = 1;
-            
+                        
             TopunHizi = new System.Windows.Forms.Timer();
             TopunHizi.Tick += new EventHandler(timer1_Tick);
             if ( seviye == 1)
@@ -204,10 +203,11 @@ namespace HizliOkuma
             if (surecik < 90)
             {
                 surecik++;
-                label1.Text = surecik.ToString();
             }
             else
+            {
                 this.Close();
+            }
         }
 
         int katsayiArttirici2 = 1;
