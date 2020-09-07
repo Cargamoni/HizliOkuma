@@ -34,5 +34,14 @@ namespace HizliOkuma
             System.GC.SuppressFinalize(kayanResimler);
             this.Show();
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            KayanYazilarForm kayanYazilar = new KayanYazilarForm();
+            kayanYazilar.ShowDialog();
+            System.GC.SuppressFinalize(kayanYazilar);
+            this.Show();
+        }
     }
 }

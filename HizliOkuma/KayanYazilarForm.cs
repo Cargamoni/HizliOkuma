@@ -42,8 +42,6 @@ namespace HizliOkuma
                 }
             }
 
-
-
             // Seviye diğer formdan gelecek
             int seviye = 1;
 

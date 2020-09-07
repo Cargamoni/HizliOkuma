@@ -31,6 +31,7 @@
             this.TenisTopuAlistirma = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.KayanNesneAlistirma = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TenisTopuAlistirma
@@ -48,7 +49,8 @@
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.Items.AddRange(new object[] {
             "Tenis Topu Göz Alıştırması",
-            "Hareket Eden Nesne Halıştırması"});
+            "Hareket Eden Nesne Alıştırması",
+            "Hareket Eden Yazı Alıştırması"});
             this.checkedListBox1.Location = new System.Drawing.Point(12, 12);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(298, 424);
@@ -64,11 +66,22 @@
             this.KayanNesneAlistirma.UseVisualStyleBackColor = true;
             this.KayanNesneAlistirma.Click += new System.EventHandler(this.KayanNesneAlistirma_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(713, 70);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Alıştırma 3";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // AnaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.KayanNesneAlistirma);
             this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.TenisTopuAlistirma);
@@ -84,6 +97,7 @@
         private System.Windows.Forms.Button TenisTopuAlistirma;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Button KayanNesneAlistirma;
+        private System.Windows.Forms.Button button1;
     }
 }
 
