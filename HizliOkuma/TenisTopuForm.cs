@@ -38,7 +38,7 @@ namespace HizliOkuma
             surecik = 0;
 
             // Seviye diğer formdan gelecek
-            seviye = 1;
+            seviye = 4;
                         
             TopunHizi = new System.Windows.Forms.Timer();
             TopunHizi.Tick += new EventHandler(timer1_Tick);

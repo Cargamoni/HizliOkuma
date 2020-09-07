@@ -58,6 +58,12 @@
     <Compile Include="KayanResimlerForm.Designer.cs">
       <DependentUpon>KayanResimlerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="KayanYazilarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KayanYazilarForm.Designer.cs">
+      <DependentUpon>KayanYazilarForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TenisTopuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +77,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="KayanResimlerForm.resx">
       <DependentUpon>KayanResimlerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KayanYazilarForm.resx">
+      <DependentUpon>KayanYazilarForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TenisTopuForm.resx">
       <DependentUpon>TenisTopuForm.cs</DependentUpon>

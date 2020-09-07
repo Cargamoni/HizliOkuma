@@ -16,7 +16,7 @@ namespace HizliOkuma
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new KayanResimlerForm());
+            Application.Run(new KayanYazilarForm());
         }
     }
 }

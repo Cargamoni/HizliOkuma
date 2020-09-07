@@ -10,3 +10,4 @@ D:\Briefcase\Git Repositories\HizliOkuma\HizliOkuma\obj\Debug\HizliOkuma.pdb
 D:\Briefcase\Git Repositories\HizliOkuma\HizliOkuma\obj\Debug\HizliOkuma.TenisTopuForm.resources
 D:\Briefcase\Git Repositories\HizliOkuma\HizliOkuma\obj\Debug\HizliOkuma.AnaForm.resources
 D:\Briefcase\Git Repositories\HizliOkuma\HizliOkuma\obj\Debug\HizliOkuma.KayanResimlerForm.resources
+D:\Briefcase\Git Repositories\HizliOkuma\HizliOkuma\obj\Debug\HizliOkuma.KayanYazilarForm.resources
